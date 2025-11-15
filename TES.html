@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SHS Website Control</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <button onclick="btnToggle()">ToggleButton</button>
+
+    <script type="text/javascript">
+        function btnToggle() {
+         
+        $.ajax ({           
+              url: 'https://io.adafruit.com/api/v2/fatlee09/feeds/power-remote/data', 
+              dataType: 'json',
+              type: 'post',
+              headers: {
+              
+              'Content-Type': 'application/json', 
+              'Host': 'io.adafruit.com',
+              'Content-Length': '24',
+              'Content-Type': 'application/json', 
+              'X-AIO-Key' : '*aio_erba96IeaB5E8qE6rrSxNKpAsDuf*'
+              },
+
+              data: JSON.stringify( { "value": "ON" } ), 
+              processData: false,
+              success: function(data, textStatus, jqXhr )
+              { alert("OFF"); 
+
+              },
+              error: function(jqXhr, textStatus, errorThrown ){ 
+                console.log(errorThrown);
+              }
+        }) ;
+}
+    </script>
+</body>
+</html>
